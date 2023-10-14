@@ -2,49 +2,33 @@ using System;
 
 abstract class Character
 {
+    private readonly string _characterType;
     protected Character(string characterType)
     {
-        throw new NotImplementedException("Please implement the Character() constructor");
+        _characterType = characterType;
     }
-
     public abstract int DamagePoints(Character target);
-
-    public virtual bool Vulnerable()
-    {
-        throw new NotImplementedException("Please implement the Character.Vulnerable() method");
-    }
-
-    public override string ToString()
-    {
-        throw new NotImplementedException("Please implement the Character.ToString() method");
-    }
+    public virtual bool Vulnerable() => false;
+    public override string ToString() => $"Character is a {_characterType}";
 }
-
 class Warrior : Character
 {
-    public Warrior() : base("TODO")
+    public Warrior() : base(nameof(Warrior))
     {
     }
-
-    public override int DamagePoints(Character target)
-    {
-        throw new NotImplementedException("Please implement the Warrior.DamagePoints() method");
-    }
+    public override int DamagePoints(Character target) => target.Vulnerable() ? 10 : 6;
 }
-
 class Wizard : Character
 {
-    public Wizard() : base("TODO")
+    private bool _preparedSpell;
+
+    public Wizard() : base(nameof(Wizard))
     {
     }
-
-    public override int DamagePoints(Character target)
-    {
-        throw new NotImplementedException("Please implement the Wizard.DamagePoints() method");
-    }
-
+    public override int DamagePoints(Character target) => _preparedSpell ? 12 : 3;
     public void PrepareSpell()
     {
-        throw new NotImplementedException("Please implement the Wizard.PrepareSpell() method");
+        _preparedSpell = true;
     }
+    public override bool Vulnerable() => !_preparedSpell;
 }
