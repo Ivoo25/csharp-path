@@ -1,8 +1,9 @@
 {
   "ExpandedNodes": [
     "",
-    "\\anagram"
+    "\\logs-logs-logs",
+    "\\roman-numerals"
   ],
-  "SelectedNode": "\\anagram\\Anagram.cs",
+  "SelectedNode": "\\roman-numerals\\RomanNumerals.cs",
   "PreviewInSolutionExplorer": false
 }
